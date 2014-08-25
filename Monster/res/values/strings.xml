@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Monster</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="log">Log：</string>
+    <string name="IMEI">IMEI：</string>
+    <string name="Current_Phone_Number">当前号码：</string>
+    <string name="Task">任务：</string>
+    <string name="Other_Phone_Number">对方号码：</string>
+    <string name="Call_length">时长：</string>
+    <string name="Failed">失败：</string>
+    <string name="Result">执行结果：</string>    <string name="SMS_Content">短信内容：</string>
+    <string name="Wifi_Count">流量：</string>
+    <string name="WebSpeed">下载速度：</string>
+    <string name="WebSite">网址：</string>
+    <string name="test">测试按钮</string>
+
+</resources>

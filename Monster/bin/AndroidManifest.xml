@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qing.monster"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- 获得读取SD卡权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 获得拨打电话权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 获得访问sim卡权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 获得接听电话权限 -->
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_INCOMING_CALLS" />
+    <!-- 获得开机启动权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 获得操作蓝牙的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 查询网络状态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 获得wifi权限 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
+    <!-- 获得上网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获得读日志权限 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 获得手机震动权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 获得wifi权限 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 获得对电源管理的权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> 
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="9" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.qing.monster.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="nosensor" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 注册service -->
+        <service android:name="com.qing.monster.CallDurationService" >
+            <intent-filter>
+                <action android:name="com.qing.monster.CallDurationService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.qing.monster.WifiCountService" >
+            <intent-filter>
+                <action android:name="com.qing.monster.WifiCountService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.qing.monster.SocketService" >
+            <intent-filter>
+                <action android:name="com.qing.monster.SocketService" />
+            </intent-filter>
+        </service>
+
+        <!-- 注册开机启动的广播接收器 -->
+        <receiver android:name="BootBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+         注册电话状态的广播接收器
+        <receiver android:name="PhoneListenBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" >              
+                </action>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" >
+                </action>
+            </intent-filter>
+        </receiver >
+        -->
+  <!-- 设备管理器 -->
+        <receiver
+            android:name=".DAR"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@layout/device_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
